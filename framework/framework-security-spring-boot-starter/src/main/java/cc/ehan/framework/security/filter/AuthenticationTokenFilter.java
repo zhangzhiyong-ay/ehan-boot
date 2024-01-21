@@ -22,7 +22,7 @@ import java.io.IOException;
  * @Author ZhangZhiYong
  */
 @RequiredArgsConstructor
-public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
+public class AuthenticationTokenFilter extends OncePerRequestFilter {
     private final AuthApi authApi;
 
     private final AccessTokenResolver accessTokenResolver;

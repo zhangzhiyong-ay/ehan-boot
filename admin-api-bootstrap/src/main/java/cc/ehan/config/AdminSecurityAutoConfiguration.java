@@ -6,7 +6,7 @@ import cc.ehan.auth.admin.security.authentication.AccountAuthenticationProvider;
 import cc.ehan.framework.security.checks.DefaultPreAuthenticationChecks;
 import cc.ehan.framework.security.config.properties.AuthorizationProperties;
 import cc.ehan.framework.security.token.AccessTokenResolver;
-import cc.ehan.framework.security.filter.JwtAuthenticationTokenFilter;
+import cc.ehan.framework.security.filter.AuthenticationTokenFilter;
 import cc.ehan.framework.security.handle.AuthenticationEntryPointImpl;
 import cc.ehan.organization.api.user.OrganizationUserApi;
 import lombok.RequiredArgsConstructor;
@@ -127,7 +127,7 @@ public class AdminSecurityAutoConfiguration extends WebSecurityConfigurerAdapter
                 .frameOptions()
                 .disable()
                 .and()
-                .addFilterBefore(new JwtAuthenticationTokenFilter(authApi, accessTokenResolver()), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new AuthenticationTokenFilter(authApi, accessTokenResolver()), UsernamePasswordAuthenticationFilter.class);
     }
 
     /**
