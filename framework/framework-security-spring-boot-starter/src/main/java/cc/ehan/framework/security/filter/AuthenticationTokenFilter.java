@@ -2,7 +2,6 @@ package cc.ehan.framework.security.filter;
 
 import cc.ehan.auth.admin.api.auth.AuthApi;
 import cc.ehan.auth.admin.api.auth.dto.LoginUserInfoResponseDTO;
-import cc.ehan.common.exception.service.AuthorizedException;
 import cc.ehan.framework.security.token.AccessTokenResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,16 +30,11 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
         String accessToken = accessTokenResolver.getAccessToken(request);
-        try {
-            LoginUserInfoResponseDTO loginUserInfo = authApi.checkAccessToken(accessToken);
-            UsernamePasswordAuthenticationToken authenticationToken
-                    = new UsernamePasswordAuthenticationToken(loginUserInfo, null, null);
-            authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-            chain.doFilter(request, response);
-        } catch (AuthorizedException e) {
-
-        }
-
+        LoginUserInfoResponseDTO loginUserInfo = authApi.checkAccessToken(accessToken);
+        UsernamePasswordAuthenticationToken authenticationToken
+                = new UsernamePasswordAuthenticationToken(loginUserInfo, null, null);
+        authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        chain.doFilter(request, response);
     }
 }

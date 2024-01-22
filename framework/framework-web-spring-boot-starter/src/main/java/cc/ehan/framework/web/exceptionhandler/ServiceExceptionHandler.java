@@ -37,6 +37,10 @@ public class ServiceExceptionHandler {
         if (StringUtils.isEmpty(message)) {
             message = MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_FORBIDDEN);
         }
-        return ResponseResult.fail(code, data, message);
+        return ResponseResult
+                .fail()
+                .code(code)
+                .data(data)
+                .message(message);
     }
 }

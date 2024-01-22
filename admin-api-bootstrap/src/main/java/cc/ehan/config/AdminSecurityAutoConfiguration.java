@@ -88,22 +88,20 @@ public class AdminSecurityAutoConfiguration extends WebSecurityConfigurerAdapter
         // 不走 securityFilter 过滤
         web.ignoring()
                 .antMatchers(
-                        "/login"
-                )
-                .antMatchers(
+                        "/login",
+                        "/error",
                         "/",
                         "/*.html",
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js",
-                        "/druid/**"
+                        "/druid/**",
+                        "/favicon.ico"
                 );
     }
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        // 注解标记允许匿名访问的url
-        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = httpSecurity.authorizeRequests();
 
         httpSecurity
                 // CSRF禁用

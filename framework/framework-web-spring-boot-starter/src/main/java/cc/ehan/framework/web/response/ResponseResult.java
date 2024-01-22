@@ -3,6 +3,7 @@ package cc.ehan.framework.web.response;
 
 import cn.hutool.http.HttpStatus;
 import lombok.Data;
+import lombok.Getter;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -12,8 +13,7 @@ import java.io.Serializable;
  *
  * @Author ZhangZhiYong
  */
-@Data
-@Accessors(chain = true)
+@Getter
 public class ResponseResult<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,26 +31,25 @@ public class ResponseResult<T> implements Serializable {
     }
 
     public static <R> ResponseResult<R> success() {
-        return new ResponseResult<>(HttpStatus.HTTP_OK, null, null);
+        return new ResponseResult<>(HttpStatus.HTTP_OK, null, "success");
     }
 
-    public static <R> ResponseResult<R> success(R data, String message) {
-        return new ResponseResult<>(HttpStatus.HTTP_OK, data, message);
+    public static <R> ResponseResult<R> fail() {
+        return new ResponseResult<>(HttpStatus.HTTP_INTERNAL_ERROR, null, "fail");
     }
 
-    public static <R> ResponseResult<R> success(R data) {
-        return new ResponseResult<>(HttpStatus.HTTP_OK, data, null);
+    public ResponseResult<T> code(int code) {
+        this.code = code;
+        return this;
     }
 
-    public static <R> ResponseResult<R> fail(int code, R data, String message) {
-        return new ResponseResult<>(code, data, message);
+    public ResponseResult<T> data(T data) {
+        this.data = data;
+        return this;
     }
 
-    public static <R> ResponseResult<R> fail(int code, String message) {
-        return new ResponseResult<>(code, null, message);
-    }
-
-    public static <R> ResponseResult<R> fail(String message) {
-        return new ResponseResult<>(HttpStatus.HTTP_INTERNAL_ERROR, null, message);
+    public ResponseResult<T> message(String message) {
+        this.message = message;
+        return this;
     }
 }

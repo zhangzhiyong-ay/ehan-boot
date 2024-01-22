@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 框架异常处理器
+ *
  * @Author ZhangZhiYong
  */
 @RestControllerAdvice
@@ -31,25 +32,22 @@ public class FrameworkExceptionHandler {
     public ResponseResult handleAccessDeniedException(AccessDeniedException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',权限校验失败'{}'", requestURI, e.getMessage());
-        return ResponseResult.fail(
-                HttpStatus.HTTP_FORBIDDEN,
-                MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_FORBIDDEN));
+        return ResponseResult.fail()
+                .code(HttpStatus.HTTP_FORBIDDEN)
+                .message(MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_FORBIDDEN));
     }
 
     /**
      * 请求方式不支持
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public ResponseResult handleHttpRequestMethodNotSupported(
-            HttpRequestMethodNotSupportedException e,
-            HttpServletRequest request) {
+    public ResponseResult handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',不支持'{}'请求", requestURI, e.getMethod());
-        return ResponseResult.fail(
-                HttpStatus.HTTP_BAD_METHOD,
-                MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_NOT_FOUND, requestURI, e.getMethod()));
+        return ResponseResult.fail()
+                .code(HttpStatus.HTTP_BAD_METHOD)
+                .message(MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_NOT_FOUND, requestURI, e.getMethod()));
     }
-
 
 
     /**
@@ -59,9 +57,10 @@ public class FrameworkExceptionHandler {
     public ResponseResult handleMissingPathVariableException(MissingPathVariableException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求路径中缺少必需的路径变量'{}',发生系统异常.", requestURI, e);
-        return ResponseResult.fail(
-                HttpStatus.HTTP_NOT_FOUND,
-                MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_NOT_FOUND), requestURI);
+        return ResponseResult
+                .fail()
+                .code(HttpStatus.HTTP_NOT_FOUND)
+                .message(MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_NOT_FOUND, requestURI));
     }
 
     /**
@@ -71,9 +70,10 @@ public class FrameworkExceptionHandler {
     public ResponseResult handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求参数类型不匹配'{}',发生系统异常.", requestURI, e);
-        return ResponseResult.fail(
-                HttpStatus.HTTP_NOT_FOUND,
-                MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_NOT_FOUND), requestURI);
+        return ResponseResult
+                .fail()
+                .code(HttpStatus.HTTP_NOT_FOUND)
+                .message(MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_NOT_FOUND, requestURI));
     }
 
     /**
@@ -83,9 +83,10 @@ public class FrameworkExceptionHandler {
     public ResponseResult handleException(Exception e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',发生系统异常.", requestURI, e);
-        return ResponseResult.fail(
-                HttpStatus.HTTP_INTERNAL_ERROR,
-                MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_INTERNAL_ERROR));
+        return ResponseResult
+                .fail()
+                .code(HttpStatus.HTTP_INTERNAL_ERROR)
+                .message(MessageSourceUtils.message(MessageSourceCodeStandard.HTTP_INTERNAL_ERROR));
     }
 
 }

@@ -3,6 +3,7 @@ package cc.ehan.framework.controller;
 import cc.ehan.common.config.SystemProperties;
 import cc.ehan.framework.web.response.ResponseResult;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author ZhangZhiYong
  */
 @RestController
+@ConditionalOnProperty(name = "system.index.enable", havingValue = "true")
 @RequiredArgsConstructor
 public class IndexController {
 
@@ -17,6 +19,8 @@ public class IndexController {
 
     @GetMapping("/")
     public ResponseResult index() {
-        return ResponseResult.success("项目启动成功，当前项目版本号为：" + systemProperties.getProjectVersion());
+        return ResponseResult
+                .success()
+                .message("项目启动成功，当前项目版本号为：" + systemProperties.getProjectVersion());
     }
 }

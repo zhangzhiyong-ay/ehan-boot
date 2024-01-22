@@ -1,5 +1,7 @@
 package cc.ehan.common.utils;
 
+import org.springframework.http.MediaType;
+
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -21,6 +23,8 @@ public class ServletUtils {
      * @throws IOException
      */
     public static void output(HttpServletResponse response, String body) throws IOException {
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setCharacterEncoding(StandardCharsets.UTF_8.name());
         ServletOutputStream outputStream = response.getOutputStream();
         outputStream.write(body.getBytes(StandardCharsets.UTF_8));
     }
