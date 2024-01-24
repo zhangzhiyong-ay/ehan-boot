@@ -1,7 +1,7 @@
 package cc.ehan.framework.security.filter;
 
-import cc.ehan.auth.admin.api.auth.AuthApi;
-import cc.ehan.auth.admin.api.auth.dto.LoginUserInfoResponseDTO;
+import cc.ehan.modules.auth.admin.api.auth.AuthApi;
+import cc.ehan.modules.auth.admin.api.auth.dto.LoginUserInfoResponseDTO;
 import cc.ehan.framework.security.token.AccessTokenResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,14 +1,14 @@
 package cc.ehan.config;
 
-import cc.ehan.auth.admin.api.auth.AuthApi;
-import cc.ehan.auth.admin.security.UserDetailsServiceImpl;
-import cc.ehan.auth.admin.security.authentication.AccountAuthenticationProvider;
+import cc.ehan.modules.auth.admin.api.auth.AuthApi;
+import cc.ehan.modules.auth.admin.admin.security.UserDetailsServiceImpl;
+import cc.ehan.modules.auth.admin.admin.security.authentication.AccountAuthenticationProvider;
 import cc.ehan.framework.security.checks.DefaultPreAuthenticationChecks;
 import cc.ehan.framework.security.config.properties.AuthorizationProperties;
 import cc.ehan.framework.security.token.AccessTokenResolver;
 import cc.ehan.framework.security.filter.AuthenticationTokenFilter;
 import cc.ehan.framework.security.handle.AuthenticationEntryPointImpl;
-import cc.ehan.organization.api.user.OrganizationUserApi;
+import cc.ehan.modules.organization.api.OrganizationUserApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

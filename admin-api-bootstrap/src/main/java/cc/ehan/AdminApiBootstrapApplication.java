@@ -1,6 +1,6 @@
 package cc.ehan;
 
-import cc.ehan.common.config.SystemProperties;
+import cc.ehan.common.base.config.config.SystemProperties;
 import cn.hutool.extra.spring.SpringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;

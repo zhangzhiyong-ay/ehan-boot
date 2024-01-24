@@ -1,7 +1,7 @@
 package cc.ehan.framework.security.checks;
 
-import cc.ehan.common.constant.MessageSourceCodeStandard;
-import cc.ehan.common.utils.MessageSourceUtils;
+import cc.ehan.common.base.constant.constant.MessageSourceCodeStandard;
+import cc.ehan.common.base.utils.MessageSourceUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.DisabledException;

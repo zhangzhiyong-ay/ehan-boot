@@ -1,6 +1,6 @@
 package cc.ehan.framework.web.filter;
 
-import cc.ehan.common.utils.StringUtils;
+import cc.ehan.common.base.utils.StringUtils;
 import cc.ehan.framework.web.servlet.BufferedServletInputStream;
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.http.HTMLFilter;

@@ -1,6 +1,6 @@
 package cc.ehan.framework.web.filter;
 
-import cc.ehan.common.utils.StringUtils;
+import cc.ehan.common.base.utils.StringUtils;
 import org.springframework.http.MediaType;
 
 import javax.servlet.*;

@@ -1,6 +1,6 @@
 package cc.ehan.framework.security;
 
-import cc.ehan.common.exception.service.AuthorizedException;
+import cc.ehan.common.base.exception.service.AuthorizedException;
 import cc.ehan.framework.security.token.LoginUserInfo;
 import cn.hutool.core.util.BooleanUtil;
 import lombok.RequiredArgsConstructor;

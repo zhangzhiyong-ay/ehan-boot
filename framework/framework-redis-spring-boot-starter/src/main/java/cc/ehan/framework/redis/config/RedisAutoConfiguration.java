@@ -1,6 +1,6 @@
 package cc.ehan.framework.redis.config;
 
-import cc.ehan.common.utils.JsonUtils;
+import cc.ehan.common.base.utils.JsonUtils;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.redisson.client.codec.Codec;

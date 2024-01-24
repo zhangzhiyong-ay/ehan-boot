@@ -1,9 +1,9 @@
 package cc.ehan.framework.web.exceptionhandler;
 
-import cc.ehan.common.constant.MessageSourceCodeStandard;
-import cc.ehan.common.exception.BaseException;
-import cc.ehan.common.utils.MessageSourceUtils;
-import cc.ehan.common.utils.StringUtils;
+import cc.ehan.common.base.constant.constant.MessageSourceCodeStandard;
+import cc.ehan.common.base.exception.BaseException;
+import cc.ehan.common.base.utils.MessageSourceUtils;
+import cc.ehan.common.base.utils.StringUtils;
 import cc.ehan.framework.web.response.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;

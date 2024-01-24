@@ -1,6 +1,6 @@
 package cc.ehan.framework.controller;
 
-import cc.ehan.common.config.SystemProperties;
+import cc.ehan.common.base.config.config.SystemProperties;
 import cc.ehan.framework.web.response.ResponseResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

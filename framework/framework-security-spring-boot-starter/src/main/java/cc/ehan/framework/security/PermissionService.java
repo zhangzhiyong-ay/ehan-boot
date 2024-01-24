@@ -1,8 +1,8 @@
 package cc.ehan.framework.security;
 
-import cc.ehan.common.utils.StringUtils;
+import cc.ehan.common.base.utils.StringUtils;
 import cc.ehan.framework.security.token.LoginUserInfo;
-import cc.ehan.organization.api.permission.OrganizationPermissionApi;
+import cc.ehan.modules.organization.api.OrganizationPermissionApi;
 import cn.hutool.core.util.ArrayUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

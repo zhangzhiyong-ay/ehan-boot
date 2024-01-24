@@ -1,7 +1,7 @@
 package cc.ehan.framework.web.exceptionhandler;
 
-import cc.ehan.common.constant.MessageSourceCodeStandard;
-import cc.ehan.common.utils.MessageSourceUtils;
+import cc.ehan.common.base.constant.constant.MessageSourceCodeStandard;
+import cc.ehan.common.base.utils.MessageSourceUtils;
 import cc.ehan.framework.web.response.ResponseResult;
 import cn.hutool.http.HttpStatus;
 import lombok.extern.slf4j.Slf4j;

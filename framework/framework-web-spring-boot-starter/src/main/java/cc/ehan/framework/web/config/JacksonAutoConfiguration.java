@@ -1,6 +1,6 @@
 package cc.ehan.framework.web.config;
 
-import cc.ehan.common.utils.JsonUtils;
+import cc.ehan.common.base.utils.JsonUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
