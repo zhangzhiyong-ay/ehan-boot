@@ -1,4 +1,4 @@
-package cc.ehan.modules.auth.admin.api.auth.dto;
+package cc.ehan.modules.auth.admin.api.dto;
 
 
 import lombok.Data;

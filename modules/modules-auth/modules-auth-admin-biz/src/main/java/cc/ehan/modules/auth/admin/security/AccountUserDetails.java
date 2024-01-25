@@ -1,4 +1,4 @@
-package cc.ehan.modules.auth.admin.admin.security;
+package cc.ehan.modules.auth.admin.security;
 
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,18 +1,18 @@
 package cc.ehan.modules.organization.service;
 
-import cc.ehan.modules.organization.mapper.OrganizationUserMapper;
+import cc.ehan.modules.organization.mapper.OrganizationRoleMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
  * @author zhangzhiyong
- * @since 2024-01-25 14:21:31
+ * @since 2024-01-25 14:20:37
  */
 @Service
 @RequiredArgsConstructor
-public class OrganizationUserService {
+public class OrganizationRoleService {
 
-    private final OrganizationUserMapper organizationUserMapper;
+    private final OrganizationRoleMapper organizationRoleMapper;
 
 }
 

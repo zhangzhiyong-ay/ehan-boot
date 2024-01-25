@@ -26,7 +26,11 @@
 #end
 
 ##定义宏，查询所有列
-#macro(allSqlColumn)#foreach($column in $tableInfo.fullColumn)$column.obj.name#if($foreach.hasNext),#if($foreach.count%8==0)
+#macro(allSqlColumn)
+    #foreach($column in $tableInfo.fullColumn)
+`$column.obj.name`##
+        #if($foreach.hasNext),##
+        #if($foreach.count%8==0)
 
         #end
 #end#end

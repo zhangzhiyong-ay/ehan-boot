@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cc.ehan.modules.organization.mapper.OrganizationUserMapper">
-  <resultMap id="BaseResultMap" type="cc.ehan.modules.organization.entity.OrganizationUserEntity">
-    <!--@mbg.generated-->
-    <!--@Table organization_user-->
-    <id column="id" property="id" />
-    <result column="name" property="name" />
-    <result column="department_id" property="departmentId" />
-    <result column="email" property="email" />
-    <result column="phone_number" property="phoneNumber" />
-    <result column="avatar" property="avatar" />
-    <result column="state" property="state" />
-    <result column="remark" property="remark" />
-    <result column="last_login_ip" property="lastLoginIp" />
-    <result column="last_login_time" property="lastLoginTime" />
-    <result column="created_user_id" property="createdUserId" />
-    <result column="created_user_name" property="createdUserName" />
-    <result column="created_time" property="createdTime" />
-    <result column="updated_user_id" property="updatedUserId" />
-    <result column="updated_user_name" property="updatedUserName" />
-    <result column="updated_time" property="updatedTime" />
-    <result column="deleted" property="deleted" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    id, `name`, department_id, email, phone_number, avatar, `state`, remark, last_login_ip, 
-    last_login_time, created_user_id, created_user_name, created_time, updated_user_id, 
-    updated_user_name, updated_time, deleted
-  </sql>
+
+    <resultMap id="BaseResultMap" type="cc.ehan.modules.organization.entity.OrganizationUserEntity">
+        <!--@Table organization_user-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="departmentId" column="department_id" jdbcType="INTEGER"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="phoneNumber" column="phone_number" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="state" column="state" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="lastLoginIp" column="last_login_ip" jdbcType="VARCHAR"/>
+        <result property="lastLoginTime" column="last_login_time" jdbcType="TIMESTAMP"/>
+        <result property="createdUserId" column="created_user_id" jdbcType="INTEGER"/>
+        <result property="createdUserName" column="created_user_name" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="updatedUserId" column="updated_user_id" jdbcType="INTEGER"/>
+        <result property="updatedUserName" column="updated_user_name" jdbcType="VARCHAR"/>
+        <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/>
+        <result property="deleted" column="deleted" jdbcType="BOOLEAN"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+`id`,`name`,`department_id`,`email`,`phone_number`,`avatar`,`state`,`remark`,
+`last_login_ip`,`last_login_time`,`created_user_id`,`created_user_name`,`created_time`,`updated_user_id`,`updated_user_name`,`updated_time`,
+`deleted`
+    </sql>
+
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into organization_user(name, department_id, email, phone_number, avatar, state, remark, last_login_ip, last_login_time, created_user_id, created_user_name, created_time, updated_user_id, updated_user_name, updated_time, deleted)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.departmentId}, #{entity.email}, #{entity.phoneNumber}, #{entity.avatar}, #{entity.state}, #{entity.remark}, #{entity.lastLoginIp}, #{entity.lastLoginTime}, #{entity.createdUserId}, #{entity.createdUserName}, #{entity.createdTime}, #{entity.updatedUserId}, #{entity.updatedUserName}, #{entity.updatedTime}, #{entity.deleted})
+        </foreach>
+        on duplicate key update
+        name = values(name) ,         department_id = values(department_id) ,         email = values(email) ,         phone_number = values(phone_number) ,         avatar = values(avatar) ,         state = values(state) ,         remark = values(remark) ,         last_login_ip = values(last_login_ip) ,         last_login_time = values(last_login_time) ,         created_user_id = values(created_user_id) ,         created_user_name = values(created_user_name) ,         created_time = values(created_time) ,         updated_user_id = values(updated_user_id) ,         updated_user_name = values(updated_user_name) ,         updated_time = values(updated_time) ,         deleted = values(deleted)     </insert>
+
 </mapper>
+

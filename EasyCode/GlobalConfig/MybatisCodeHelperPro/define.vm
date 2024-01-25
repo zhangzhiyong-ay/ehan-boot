@@ -19,7 +19,7 @@
 ##定义表注释的宏定义，调用方式：#tableComment("注释信息")
 #macro(tableComment $desc)
 /**
- * $!{tableInfo.comment}($!{tableInfo.name})$desc
+ * $!{tableInfo.comment}($!{tableInfo.obj.name})$desc
  *
  * @author $!author
  * @since $!time.currTime()

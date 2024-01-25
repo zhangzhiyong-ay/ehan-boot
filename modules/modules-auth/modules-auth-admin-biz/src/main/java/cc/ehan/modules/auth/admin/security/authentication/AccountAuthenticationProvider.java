@@ -1,6 +1,6 @@
-package cc.ehan.modules.auth.admin.admin.security.authentication;
+package cc.ehan.modules.auth.admin.security.authentication;
 
-import cc.ehan.modules.auth.admin.admin.security.AccountUserDetails;
+import cc.ehan.modules.auth.admin.security.AccountUserDetails;
 import cc.ehan.common.base.utils.BeanUtils;
 import cc.ehan.framework.security.token.LoginUserInfo;
 import cc.ehan.modules.organization.api.OrganizationUserApi;

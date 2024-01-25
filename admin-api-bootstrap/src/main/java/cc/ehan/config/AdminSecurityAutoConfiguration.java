@@ -1,8 +1,8 @@
 package cc.ehan.config;
 
-import cc.ehan.modules.auth.admin.api.auth.AuthApi;
-import cc.ehan.modules.auth.admin.admin.security.UserDetailsServiceImpl;
-import cc.ehan.modules.auth.admin.admin.security.authentication.AccountAuthenticationProvider;
+import cc.ehan.modules.auth.admin.api.AuthApi;
+import cc.ehan.modules.auth.admin.security.UserDetailsServiceImpl;
+import cc.ehan.modules.auth.admin.security.authentication.AccountAuthenticationProvider;
 import cc.ehan.framework.security.checks.DefaultPreAuthenticationChecks;
 import cc.ehan.framework.security.config.properties.AuthorizationProperties;
 import cc.ehan.framework.security.token.AccessTokenResolver;

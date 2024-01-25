@@ -1,7 +1,7 @@
-package cc.ehan.modules.auth.admin.admin.api.auth;
+package cc.ehan.modules.auth.admin.api;
 
-import cc.ehan.modules.auth.admin.api.auth.AuthApi;
-import cc.ehan.modules.auth.admin.api.auth.dto.LoginUserInfoResponseDTO;
+import cc.ehan.modules.auth.admin.api.AuthApi;
+import cc.ehan.modules.auth.admin.api.dto.LoginUserInfoResponseDTO;
 import cc.ehan.common.base.exception.service.AuthorizedException;
 import org.springframework.stereotype.Component;
 

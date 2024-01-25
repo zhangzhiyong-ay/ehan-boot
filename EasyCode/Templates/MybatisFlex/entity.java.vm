@@ -43,7 +43,6 @@ public class $!{entityName} extends BaseEntity {
      * ${column.comment}
      */
             #end
-
     @Column(value = "${column.obj.name}")
     private $!{tool.getClsNameByFullName($column.type)} $!{column.name};
         #end

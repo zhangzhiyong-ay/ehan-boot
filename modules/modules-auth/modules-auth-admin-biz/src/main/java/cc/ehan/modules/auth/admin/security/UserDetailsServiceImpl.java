@@ -1,4 +1,4 @@
-package cc.ehan.modules.auth.admin.admin.security;
+package cc.ehan.modules.auth.admin.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

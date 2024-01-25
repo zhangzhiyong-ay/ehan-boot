@@ -5,20 +5,17 @@
 #set($modelPackageName="${tableInfo.savePackageName}.entity")
 
 ## mapper
-#set($mapperSrcFolder="${projectPath}/src/main/java")
-#set($mapperPackageName="com.mapper")
+#set($mapperSrcFolder="${tableInfo.savePath}/mapper")
+#set($mapperPackageName="${tableInfo.savePackageName}.mapper")
 
 ## mapperXml
-#set($mapperXmlFolder="${projectPath}/src/main/resources")
+#set($mapperXmlFolder="${tableInfo.savePath}/mapper/xml")
 #set($mapperXmlPackage="mapperxml")
 
 ## service
-#set($serviceSrcFolder="${projectPath}/src/main/java")
-#set($servicePackageName="com.service")
+#set($serviceSrcFolder="${tableInfo.savePath}/service")
+#set($servicePackageName="${tableInfo.savePackageName}.service")
 
-## serviceImpl
-#set($serviceImplSrcFolder="${projectPath}/src/main/java")
-#set($serviceImplPackageName="com.service.impl")
 
 ## other
 #set($useLombok=true)

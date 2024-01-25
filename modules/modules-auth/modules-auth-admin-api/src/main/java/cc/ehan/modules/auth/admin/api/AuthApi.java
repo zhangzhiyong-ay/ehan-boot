@@ -1,6 +1,6 @@
-package cc.ehan.modules.auth.admin.api.auth;
+package cc.ehan.modules.auth.admin.api;
 
-import cc.ehan.modules.auth.admin.api.auth.dto.LoginUserInfoResponseDTO;
+import cc.ehan.modules.auth.admin.api.dto.LoginUserInfoResponseDTO;
 import cc.ehan.common.base.exception.service.AuthorizedException;
 
 /**

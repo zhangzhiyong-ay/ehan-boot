@@ -11,6 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrganizationUserBusiness {
 
-    private final OrganizationUserService userService;
+    private final OrganizationUserService organizationUserService;
 
 }

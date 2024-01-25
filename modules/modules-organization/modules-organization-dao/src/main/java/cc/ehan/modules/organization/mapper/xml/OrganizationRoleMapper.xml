@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.ehan.modules.organization.mapper.OrganizationRoleMapper">
+    <resultMap id="BaseResultMap" type="cc.ehan.modules.organization.entity.OrganizationRoleEntity">
+        <!--@Table organization_role-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="key" column="key" jdbcType="VARCHAR"/>
+        <result property="state" column="state" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="createdUserId" column="created_user_id" jdbcType="INTEGER"/>
+        <result property="createdUserName" column="created_user_name" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="updatedUserId" column="updated_user_id" jdbcType="INTEGER"/>
+        <result property="updatedUserName" column="updated_user_name" jdbcType="VARCHAR"/>
+        <result property="updatedTime" column="updated_time" jdbcType="TIMESTAMP"/>
+        <result property="deleted" column="deleted" jdbcType="BOOLEAN"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        `id`, `name`, `key`, `state`, `remark`, `created_user_id`, `created_user_name`, `created_time`,
+        `updated_user_id`, `updated_user_name`, `updated_time`, `deleted`
+    </sql>
+
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into organization_role(name, key, state, remark, created_user_id, created_user_name, created_time,
+                                      updated_user_id, updated_user_name, updated_time, deleted)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.key}, #{entity.state}, #{entity.remark}, #{entity.createdUserId},
+             #{entity.createdUserName}, #{entity.createdTime}, #{entity.updatedUserId}, #{entity.updatedUserName},
+             #{entity.updatedTime}, #{entity.deleted})
+        </foreach>
+        on duplicate key update name              = values(name),
+                                key               = values(key),
+                                state             = values(state),
+                                remark            = values(remark),
+                                created_user_id   =
+                                    values(created_user_id),
+                                created_user_name = values(created_user_name),
+                                created_time      = values(created_time),
+                                updated_user_id   = values(updated_user_id),
+                                updated_user_name = values(updated_user_name),
+                                updated_time      =
+                                    values(updated_time),
+                                deleted           = values(deleted)
+    </insert>
+</mapper>
+

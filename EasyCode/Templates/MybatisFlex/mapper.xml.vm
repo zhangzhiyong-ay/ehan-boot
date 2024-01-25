@@ -4,8 +4,7 @@ $!{mybatisSupport.vm}
 
 
 ##设置保存名称与保存位置
-#set($XmlSavePath = $tool.append(${mapperXmlFolder},"/",${mapperXmlPackage.replace(".","/")}))
-$!callback.setSavePath($XmlSavePath)
+$!callback.setSavePath($mapperXmlFolder)
 $!callback.setFileName($tool.append($!{tableInfo.name}, $!{mapperSuffix},".xml"))
 
 #set($daoName = $tool.append($tableInfo.name, ${daoSuffix}))
@@ -22,24 +21,27 @@ $!callback.setFileName($tool.append($!{tableInfo.name}, $!{mapperSuffix},".xml")
     <resultMap id="BaseResultMap" type="$!{modelPackageName}.$!{entityName}">
         <!--@Table $!{tableInfo.obj.name}-->
         #foreach($column in $tableInfo.fullColumn)
-            <result property="$!column.name" column="$!column.obj.name" jdbcType="$!column.ext.jdbcType"/>
+        <result property="$!column.name" column="$!column.obj.name" jdbcType="$!column.ext.jdbcType"/>
         #end
     </resultMap>
 
-    <sql id="Base_Column_List">
-        #allSqlColumn()
+    <sql id="BaseColumns">
+    #allSqlColumn()
     </sql>
-
 
     <!-- 批量插入或按主键更新 -->
     <insert id="insertOrUpdateBatch" keyProperty="$!pk.name" useGeneratedKeys="true">
-        insert into $!{tableInfo.obj.parent.name}.$!{tableInfo.obj.name}(#foreach($column in $tableInfo.otherColumn)$!column.obj.name#if($foreach.hasNext), #end#end)
+        insert into $!{tableInfo.obj.name}(#foreach($column in $tableInfo.otherColumn)$!column.obj.name#if($foreach.hasNext), #end#end)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#foreach($column in $tableInfo.otherColumn)#{entity.$!{column.name}}#if($foreach.hasNext), #end#end)
         </foreach>
         on duplicate key update
-         #foreach($column in $tableInfo.otherColumn)$!column.obj.name = values($!column.obj.name) #if($foreach.hasNext), #end#end
+         #foreach($column in $tableInfo.otherColumn)
+        $!column.obj.name = values($!column.obj.name) ##
+            #if($foreach.hasNext), ##
+            #end
+        #end
     </insert>
 
 </mapper>
