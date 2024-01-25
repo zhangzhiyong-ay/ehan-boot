@@ -4,7 +4,7 @@ import cc.ehan.modules.auth.admin.security.AccountUserDetails;
 import cc.ehan.common.base.utils.BeanUtils;
 import cc.ehan.framework.security.token.LoginUserInfo;
 import cc.ehan.modules.organization.api.OrganizationUserApi;
-import cc.ehan.modules.organization.api.dto.OrganizationUserInfoResponseDTO;
+import cc.ehan.modules.organization.api.response.OrganizationUserInfoApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.Authentication;
@@ -19,7 +19,7 @@ public class AccountAuthenticationProvider extends DaoAuthenticationProvider {
     protected Authentication createSuccessAuthentication(Object principal, Authentication authentication, UserDetails user) {
         if (principal instanceof AccountUserDetails) {
             Long userId = ((AccountUserDetails) principal).getUserId();
-            OrganizationUserInfoResponseDTO userInfo = organizationUserApi.selectUserInfoByUserId(userId);
+            OrganizationUserInfoApiResponse userInfo = organizationUserApi.selectUserInfoByUserId(userId);
             LoginUserInfo loginUserInfo = BeanUtils.copyPropertiesByClass(userInfo, LoginUserInfo.class);
             return super.createSuccessAuthentication(loginUserInfo, authentication, user);
         }

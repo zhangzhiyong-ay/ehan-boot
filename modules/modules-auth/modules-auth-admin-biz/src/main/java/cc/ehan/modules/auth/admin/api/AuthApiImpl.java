@@ -1,12 +1,11 @@
 package cc.ehan.modules.auth.admin.api;
 
-import cc.ehan.modules.auth.admin.api.AuthApi;
-import cc.ehan.modules.auth.admin.api.dto.LoginUserInfoResponseDTO;
 import cc.ehan.common.base.exception.service.AuthorizedException;
+import cc.ehan.modules.auth.admin.api.dto.LoginUserInfoResponseDTO;
 import org.springframework.stereotype.Component;
 
 /**
- * @Author ZhangZhiYong
+ * @author zhangzhiyong
  */
 @Component
 public class AuthApiImpl implements AuthApi {

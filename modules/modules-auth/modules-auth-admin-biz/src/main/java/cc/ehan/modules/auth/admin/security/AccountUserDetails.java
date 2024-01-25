@@ -1,58 +1,18 @@
 package cc.ehan.modules.auth.admin.security;
 
 import lombok.Getter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.User;
 
-import java.util.Collection;
+import java.util.Collections;
 
-@Getter
-public class AccountUserDetails implements UserDetails {
+public class AccountUserDetails extends User {
 
+    @Getter
     private final Long userId;
 
-    private final String username;
-
-    private final String password;
-
-    public AccountUserDetails(Long userId, String username, String password) {
+    public AccountUserDetails(Long userId, String username, String password, boolean enabled) {
+        super(username, password, enabled, true, true, true, Collections.emptyList());
         this.userId = userId;
-        this.username = username;
-        this.password = password;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }

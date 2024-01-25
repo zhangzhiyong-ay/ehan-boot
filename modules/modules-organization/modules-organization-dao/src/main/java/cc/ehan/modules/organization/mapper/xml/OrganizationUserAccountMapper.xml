@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.ehan.modules.organization.mapper.OrganizationUserAccountMapper">
+    <resultMap id="BaseResultMap" type="cc.ehan.modules.organization.entity.OrganizationUserAccountEntity">
+        <!--@Table organization_user_account-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="accountName" column="account_name" jdbcType="VARCHAR"/>
+        <result property="accountPassword" column="account_password" jdbcType="VARCHAR"/>
+        <result property="deleted" column="deleted" jdbcType="BOOLEAN"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        `id`, `account_name`, `account_password`, `deleted`
+    </sql>
+
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into organization_user_account(account_name, account_password, deleted)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.accountName}, #{entity.accountPassword}, #{entity.deleted})
+        </foreach>
+        on duplicate key update account_name     = values(account_name),
+                                account_password = values(account_password),
+                                deleted          = values(deleted)
+    </insert>
+
+    <select id="selectLoginAccount" resultType="cc.ehan.modules.organization.dto.LoginAccountDTO">
+        select ua.id, ua.account_name, ua.account_password, u.state
+        from organization_user_account ua
+                 inner join organization_user u on u.id = ua.id and u.deleted = 0
+        where ua.account_name = #{accountName} and ua.deleted = 0
+        limit 1
+    </select>
+</mapper>
+

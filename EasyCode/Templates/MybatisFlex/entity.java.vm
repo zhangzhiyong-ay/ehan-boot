@@ -21,6 +21,7 @@ import com.mybatisflex.annotation.KeyType;
 import com.mybatisflex.annotation.Table;
 import lombok.Data;
 $!{autoImport.vm}
+
 ##表注释（宏定义）
 #tableComment("表实体类")
 #if(${useLombok})

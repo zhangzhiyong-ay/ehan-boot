@@ -13,16 +13,16 @@
     <properties>
         <springboot.version>2.7.18</springboot.version>
         <lombok.version>1.18.30</lombok.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
         <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-        <druid.version>1.2.20</druid.version>
-        <commons.io.version>2.13.0</commons.io.version>
-        <hutool.version>5.8.21</hutool.version>
+        <druid.version>1.2.21</druid.version>
+        <commons.io.version>2.15.1</commons.io.version>
+        <hutool.version>5.8.25</hutool.version>
         <redisson.version>3.17.7</redisson.version>
-        <commons.collections.version>3.2.2</commons.collections.version>
-        <mybatis-flex.version>1.7.6</mybatis-flex.version>
+        <mybatis-flex.version>1.7.7</mybatis-flex.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -110,6 +110,17 @@
                 <version>${lombok.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
             <!--    mybatis flex        -->
             <dependency>
                 <groupId>com.mybatis-flex</groupId>
@@ -169,6 +180,16 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.2.0</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
                         </path>
                         <path>
                             <groupId>com.mybatis-flex</groupId>

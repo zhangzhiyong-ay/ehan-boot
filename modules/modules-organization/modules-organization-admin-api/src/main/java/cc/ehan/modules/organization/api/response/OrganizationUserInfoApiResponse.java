@@ -1,4 +1,4 @@
-package cc.ehan.modules.organization.api.dto;
+package cc.ehan.modules.organization.api.response;
 
 
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.List;
  * @Author ZhangZhiYong
  */
 @Data
-public class OrganizationUserInfoResponseDTO {
+public class OrganizationUserInfoApiResponse {
 
     private Long userId;
 

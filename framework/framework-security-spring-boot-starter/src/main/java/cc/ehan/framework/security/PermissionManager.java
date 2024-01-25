@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 /**
  * @Author ZhangZhiYong
  */
-@Service("permissionService")
+@Service("permissionManager")
 @RequiredArgsConstructor
-public class PermissionService {
+public class PermissionManager {
 
     private final OrganizationPermissionApi organizationPermissionApi;
 

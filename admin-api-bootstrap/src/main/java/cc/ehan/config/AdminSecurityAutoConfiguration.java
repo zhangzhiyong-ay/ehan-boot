@@ -1,13 +1,13 @@
 package cc.ehan.config;
 
+import cc.ehan.framework.security.checks.DefaultPreAuthenticationChecks;
+import cc.ehan.framework.security.config.properties.AuthorizationProperties;
+import cc.ehan.framework.security.filter.AuthenticationTokenFilter;
+import cc.ehan.framework.security.handle.AuthenticationEntryPointImpl;
+import cc.ehan.framework.security.token.AccessTokenResolver;
 import cc.ehan.modules.auth.admin.api.AuthApi;
 import cc.ehan.modules.auth.admin.security.UserDetailsServiceImpl;
 import cc.ehan.modules.auth.admin.security.authentication.AccountAuthenticationProvider;
-import cc.ehan.framework.security.checks.DefaultPreAuthenticationChecks;
-import cc.ehan.framework.security.config.properties.AuthorizationProperties;
-import cc.ehan.framework.security.token.AccessTokenResolver;
-import cc.ehan.framework.security.filter.AuthenticationTokenFilter;
-import cc.ehan.framework.security.handle.AuthenticationEntryPointImpl;
 import cc.ehan.modules.organization.api.OrganizationUserApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -46,7 +46,7 @@ public class AdminSecurityAutoConfiguration extends WebSecurityConfigurerAdapter
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserDetailsServiceImpl();
+        return new UserDetailsServiceImpl(organizationUserApi);
     }
 
 
