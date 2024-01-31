@@ -1,8 +1,8 @@
 package cc.ehan.framework.security.filter;
 
+import cc.ehan.framework.security.token.TokenManager;
 import cc.ehan.modules.auth.admin.api.AuthApi;
 import cc.ehan.modules.auth.admin.api.dto.LoginUserInfoResponseDTO;
-import cc.ehan.framework.security.token.AccessTokenResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,12 +24,12 @@ import java.io.IOException;
 public class AuthenticationTokenFilter extends OncePerRequestFilter {
     private final AuthApi authApi;
 
-    private final AccessTokenResolver accessTokenResolver;
+    private final TokenManager tokenManager;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-        String accessToken = accessTokenResolver.getAccessToken(request);
+        String accessToken = tokenManager.getAccessToken(request);
         LoginUserInfoResponseDTO loginUserInfo = authApi.checkAccessToken(accessToken);
         UsernamePasswordAuthenticationToken authenticationToken
                 = new UsernamePasswordAuthenticationToken(loginUserInfo, null, null);

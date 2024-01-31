@@ -4,12 +4,13 @@ import cc.ehan.framework.security.checks.DefaultPreAuthenticationChecks;
 import cc.ehan.framework.security.config.properties.AuthorizationProperties;
 import cc.ehan.framework.security.filter.AuthenticationTokenFilter;
 import cc.ehan.framework.security.handle.AuthenticationEntryPointImpl;
-import cc.ehan.framework.security.token.AccessTokenResolver;
+import cc.ehan.framework.security.token.TokenManager;
 import cc.ehan.modules.auth.admin.api.AuthApi;
 import cc.ehan.modules.auth.admin.security.UserDetailsServiceImpl;
 import cc.ehan.modules.auth.admin.security.authentication.AccountAuthenticationProvider;
 import cc.ehan.modules.organization.api.OrganizationUserApi;
 import lombok.RequiredArgsConstructor;
+import org.redisson.api.RedissonClient;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,6 +40,8 @@ public class AdminSecurityAutoConfiguration extends WebSecurityConfigurerAdapter
 
     private final AuthorizationProperties authorizationProperties;
 
+    private final RedissonClient redissonClient;
+
     @Bean
     public AuthenticationEntryPoint unauthorizedHandler() {
         return new AuthenticationEntryPointImpl();
@@ -51,8 +54,8 @@ public class AdminSecurityAutoConfiguration extends WebSecurityConfigurerAdapter
 
 
     @Bean
-    public AccessTokenResolver accessTokenResolver() {
-        return new AccessTokenResolver(authorizationProperties.getHeaderName());
+    public TokenManager tokenManager() {
+        return new TokenManager(redissonClient, authorizationProperties);
     }
 
     /**
@@ -124,7 +127,7 @@ public class AdminSecurityAutoConfiguration extends WebSecurityConfigurerAdapter
                 .frameOptions()
                 .disable()
                 .and()
-                .addFilterBefore(new AuthenticationTokenFilter(authApi, accessTokenResolver()), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new AuthenticationTokenFilter(authApi, tokenManager()), UsernamePasswordAuthenticationFilter.class);
     }
 
     /**
